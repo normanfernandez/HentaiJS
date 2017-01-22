@@ -1,12 +1,12 @@
 {
   "name": "hentaijs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "~4.14.0",
-	"request": "latest"
+    "request": "latest"
   }
 }
