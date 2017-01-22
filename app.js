@@ -1,14 +1,10 @@
-var express = require('express');
-var path = require('path');
+const html_fetch =  require('./core/html_fetch');
+const yaoi_heaven = require('./core/url_parser/yaoi_heaven');
+const doujin_downloader = require('./core/doujin_downloader');
 
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-app.use('/users', users);
-
-module.exports = app;
+var src = html_fetch.getHtml("https://www.yaoihavenreborn.com/doujinshi/giniro-nexus" ,
+	function(src){
+            var doujin = yaoi_heaven.parse(src);
+            doujin_downloader.download(doujin);
+	}
+);
